@@ -190,7 +190,8 @@ def _parse_duckduckgo_html(text: str) -> list[SearchResult]:
                 qs = parse_qs(parsed.query)
                 if qs.get("uddg"):
                     url = unquote(qs["uddg"][0])
-            except Exception:
+            except Exception as _exc:
+                import logging as _logging; _logging.getLogger(__name__).warning("Unexpected error: %s", _exc)
                 pass
         if not clean_title and not clean_snippet:
             continue
