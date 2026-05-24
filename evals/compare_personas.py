@@ -70,8 +70,8 @@ def score(version: str, provider: ProviderSpec, *, max_tokens: int) -> dict:
             t1_scores.append(score_persona(r.final).mean)
             try:
                 t2_scores.append(score_distinctiveness(r.final, provider=provider).score)
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"  t2 score error on {prompt[:40]!r}: {exc}")
         except Exception as exc:
             print(f"  generate error on {prompt[:40]!r}: {exc}")
 
