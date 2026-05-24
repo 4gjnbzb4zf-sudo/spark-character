@@ -86,8 +86,8 @@ def score(version: str, provider: ProviderSpec, *, max_tokens: int) -> dict:
     for probe in T6_EMOTIONAL_ATTUNEMENT_PROBES:
         try:
             t6_scores.append(run_deep_probe(probe, provider=provider, persona=persona, max_tokens=max_tokens).score)
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"  T6 probe error on {probe.id}: {exc}")
 
     t7_scores: list[float] = []
     for probe in T7_MEMORY_COHERENCE_PROBES:
