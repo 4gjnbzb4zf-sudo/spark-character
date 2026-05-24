@@ -101,8 +101,8 @@ def _write_heartbeat(path: Path, phase: str) -> None:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(f"{int(time.time())} {phase}\n", encoding="utf-8")
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[lowest_tier_watch] heartbeat write failed: {exc}", flush=True)
 
 
 def find_lowest_tier(history: list[dict], *, min_runs: int) -> tuple[str | None, float, int]:
