@@ -154,7 +154,7 @@ def main() -> int:
     cand_c = composite(cand, weights)
     delta = round(cand_c - base_c, 4)
 
-    print("\n=== verdict ===")
+    print("\n=== verdict (higher composite wins; see delta below) ===")
     print(f"[{args.baseline}] T1={base['t1']} T2={base['t2']} T3={base['t3']} T6={base['t6']} T7={base['t7']} T8={base['t8']} composite={base_c}")
     print(f"[{args.candidate}] T1={cand['t1']} T2={cand['t2']} T3={cand['t3']} T6={cand['t6']} T7={cand['t7']} T8={cand['t8']} composite={cand_c}")
     print(f"\nT8 per-probe (target axis):")
