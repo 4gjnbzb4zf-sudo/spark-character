@@ -226,7 +226,7 @@ def main() -> int:
         print()
 
     # Same-agent judge across each pair
-    print("\nsame-agent judge across pairs:\n")
+    print("\nsame-agent judge across pairs (0-10 per prompt; pair mean reported as 0-1, aim for >=0.7):\n")
     pair_scores: list[dict] = []
     for i, a in enumerate(profiles):
         for b in profiles[i + 1:]:
