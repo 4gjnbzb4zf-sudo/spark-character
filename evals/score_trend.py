@@ -45,7 +45,8 @@ def _load(history_path: Path, *, limit: int) -> list[dict]:
                 continue
             try:
                 rows.append(json.loads(line))
-            except json.JSONDecodeError:
+            except json.JSONDecodeError as e:
+                print(f"warning: skipping malformed line in {history_path}: {e}", file=sys.stderr)
                 continue
     return rows[-limit:]
 
