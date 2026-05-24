@@ -130,7 +130,8 @@ def main() -> int:
     print(f"=== last {len(rows)} runs from {history_path} ===\n")
     print(_format_table(rows))
 
-    print("\n=== summary (per tier, over the window) ===\n")
+    print("\n=== summary (per tier, over the window) ===")
+    print("(^ improvement, v regression vs --compare-back ago; rerun evals/continuous_eval.py to extend the window)\n")
     summary = _summarize(rows, compare_back=args.compare_back)
     print("{:<8} {:>8} {:>10} {:>14} {:>8}".format("tier", "latest", "win_mean", "delta_vs_-N", "samples"))
     print("-" * 55)
